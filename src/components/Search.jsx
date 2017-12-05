@@ -26,7 +26,7 @@ export default class Search extends Component {
   }
 
   requestData() {
-    axios.get(`http://localhost:8000/instruments/${this.state.search}`)
+    axios.get(`http://localhost:8000/ingredients/${this.state.search}`)
     .then((response) => {
       console.log(response.data)
       this.setState({ dataSource: response.data, waiting: true })
