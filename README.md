@@ -1,27 +1,26 @@
 
-// '/gear' awkward - resourceful naming => '/amazon-search/' '/items'
-
-V0
+## V0
 CRUD Recipes
  - sampleUrl -> youtubeUrl, soundcloudUrl
  - instructions (html WYSIWYG text box)
 
-V1
+## V1
  - Ingredients
    - url
 
-V2
+## V2
 Users & Auth
 
 -------- go live ---------
-V3
+## V3
 Reviews/Comments
 
-V4
+## V4
 Amazon search
 Cost estimate
 
-
+# Tips
+// '/gear' awkward - resourceful naming => '/amazon-search/' '/items'
 
 
 

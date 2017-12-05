@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import ProgressLoader from './ProgressLoader'
 import axios from 'axios'
+import serverPath from '../paths'
 
 export default class Search extends Component {
 
@@ -16,9 +17,10 @@ export default class Search extends Component {
   }
 
   changeSearch(value) {
-    if (this.state.waiting == false) {
+    if (this.state.waiting === false) {
       setTimeout(this.requestData, 2000);
     }
+
     this.setState({
       search: value,
       waiting: true
@@ -26,10 +28,11 @@ export default class Search extends Component {
   }
 
   requestData() {
-    axios.get(`http://localhost:8000/ingredients/${this.state.search}`)
+    console.log("Here is the path", serverPath)
+    axios.get(`${serverPath}/ingredients/${this.state.search}`)
     .then((response) => {
       console.log(response.data)
-      this.setState({ dataSource: response.data, waiting: true })
+      this.setState({ dataSource: response.data, waiting: false })
     })
     .catch((error) => {
       console.log("Here is an error: ", error)
@@ -38,21 +41,22 @@ export default class Search extends Component {
 
   render() {
 
-    // Get data if there is a search term
-    if (this.state.search !== "") {
-
-    }
+    const waiting = this.state.waiting
 
     return (
       <div className="search-component">
         {console.log("Here is the search: ", this.state.search)}
+        {console.log("Here is the waiting state: ", this.state.waiting)}
+        {console.log("Here is the dataSource: ", this.state.dataSource)}
+
         <AutoComplete value={this.state.search}
           hintText="Type something"
           dataSource={this.state.dataSource}
           floatingLabelText="Search"
           onUpdateInput={this.changeSearch.bind(this)}
+          fullWidth={true}
           />
-        <ProgressLoader />
+        { (waiting) ? (<ProgressLoader />) : (<span></span>) }
         <p><span><strong>Here is your search:</strong>... {this.state.search}</span></p>
       </div>
     );
