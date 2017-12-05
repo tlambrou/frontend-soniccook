@@ -59,7 +59,6 @@ export class Recipes extends Component {
                 <table className="table table-hover">
                   <thead>
                     <tr>
-                      <th className="text-center">#</th>
                       <th>Track</th>
                       <th>Artist</th>
                       <th>Album</th>
