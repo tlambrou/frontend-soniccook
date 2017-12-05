@@ -4,7 +4,7 @@
 V0
 CRUD Recipes
  - sampleUrl -> youtubeUrl, soundcloudUrl
- - instructions (html wiziwig text box)
+ - instructions (html WYSIWYG text box)
 
 V1
  - Ingredients
@@ -19,9 +19,7 @@ Reviews/Comments
 
 V4
 Amazon search
-
-V5
-The cost
+Cost estimate
 
 
 
