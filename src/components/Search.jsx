@@ -34,7 +34,7 @@ export default class Search extends Component {
       this.setState({ dataSource: response.data, waiting: false })
     })
     .catch((error) => {
-      console.log("Here is an error: ", error)
+      console.log("Oops! There was an error: ", error)
     })
   }
 
