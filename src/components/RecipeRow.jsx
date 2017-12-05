@@ -5,7 +5,6 @@ export class RecipeRow extends Component {
   render() {
     return (
       <tr>
-        <td className="text-center">1</td>
         <td>{this.props.track}</td>
         <td>{this.props.artist}</td>
         <td>{this.props.album}</td>

@@ -48,13 +48,18 @@ export class Recipes extends Component {
     return (
       <div className="section section-gray">
         <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2>Sonic Recipes...</h2>
+              <br/>
+            </div>
+          </div>
           <div className="row justify-content-center">
             <div className="col-12">
               <div className="table-responsive">
-                <table className="table">
+                <table className="table table-hover">
                   <thead>
                     <tr>
-                      <th className="text-center">#</th>
                       <th>Track</th>
                       <th>Artist</th>
                       <th>Album</th>
@@ -71,6 +76,7 @@ export class Recipes extends Component {
 
             </div>
           </div>
+
 
         </div>
 
