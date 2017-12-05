@@ -23,7 +23,6 @@ export class Recipes extends Component {
     this.setState({ waiting: true })
     axios.get(`${serverPath}/recipes/`)
     .then((response) => {
-      console.log(response.data)
       this.setState({ recipes: response.data, waiting: false })
     })
     .catch((error) => {
@@ -60,6 +59,7 @@ export class Recipes extends Component {
                 <table className="table table-hover">
                   <thead>
                     <tr>
+                      <th className="text-center">#</th>
                       <th>Track</th>
                       <th>Artist</th>
                       <th>Album</th>
@@ -68,7 +68,6 @@ export class Recipes extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {console.log("Recipes: ", this.state.recipes)}
                     {this.renderRecipes()}
                   </tbody>
                 </table>

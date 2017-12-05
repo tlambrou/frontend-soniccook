@@ -30,7 +30,6 @@ export default class Search extends Component {
   requestData() {
     axios.get(`${serverPath}/ingredients/${this.state.search}`)
     .then((response) => {
-      console.log(response.data)
       this.setState({ dataSource: response.data, waiting: false })
     })
     .catch((error) => {
@@ -43,9 +42,6 @@ export default class Search extends Component {
       <div className="row justify-content-center">
         <div className="col-8">
           <div className="search-component">
-            {console.log("Here is the waiting state: ", this.state.waiting)}
-            {console.log("Here is the dataSource: ", this.state.dataSource)}
-
             <AutoComplete value={this.state.search}
               hintText="Type something"
               dataSource={this.state.dataSource}
