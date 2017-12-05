@@ -28,7 +28,6 @@ export default class Search extends Component {
   }
 
   requestData() {
-    console.log("Here is the path", serverPath)
     axios.get(`${serverPath}/ingredients/${this.state.search}`)
     .then((response) => {
       console.log(response.data)
@@ -40,25 +39,27 @@ export default class Search extends Component {
   }
 
   render() {
-
-    const waiting = this.state.waiting
-
     return (
-      <div className="search-component">
-        {console.log("Here is the search: ", this.state.search)}
-        {console.log("Here is the waiting state: ", this.state.waiting)}
-        {console.log("Here is the dataSource: ", this.state.dataSource)}
+      <div className="row justify-content-center">
+        <div className="col-8">
+          <div className="search-component">
+            {console.log("Here is the waiting state: ", this.state.waiting)}
+            {console.log("Here is the dataSource: ", this.state.dataSource)}
 
-        <AutoComplete value={this.state.search}
-          hintText="Type something"
-          dataSource={this.state.dataSource}
-          floatingLabelText="Search"
-          onUpdateInput={this.changeSearch.bind(this)}
-          fullWidth={true}
-          />
-        { (waiting) ? (<ProgressLoader />) : (<span></span>) }
-        <p><span><strong>Here is your search:</strong>... {this.state.search}</span></p>
+            <AutoComplete value={this.state.search}
+              hintText="Type something"
+              dataSource={this.state.dataSource}
+              floatingLabelText="Search"
+              onUpdateInput={this.changeSearch.bind(this)}
+              fullWidth={true}
+              />
+            { (this.state.waiting) ? (<ProgressLoader />) : (<span></span>) }
+            <p><span><strong>Here is your search:</strong>... {this.state.search}</span></p>
+          </div>
+            </div>
       </div>
+
+
     );
   }
 

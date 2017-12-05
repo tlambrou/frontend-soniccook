@@ -1,10 +1,7 @@
 import React from 'react'
-import CircularProgress from 'material-ui/CircularProgress'
 
 const ProgressLoader = () => (
-  <div style={{ display: `inline-block` }}>
-    <CircularProgress />
-  </div>
+  <div className='uil-reload-css reload-background'><div></div></div>
 );
 
 export default ProgressLoader
