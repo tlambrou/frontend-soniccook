@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import Navbar from "./components/Navbar"
-import Recipes from "./components/Recipes"
-import Search from "./components/Search"
+import Main from "./components/Main"
 import './App.css'
+import { BrowserRouter as Router } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
@@ -11,16 +10,14 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-          <div>
-            <Navbar/>
-            <Recipes/>
-            <Search/>
-          </div>
-
+      <Router>
+        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+          <Main />
         </MuiThemeProvider>
-      );
-    }
-  }
+      </Router>
 
-  export default App;
+    )
+  }
+}
+
+export default App

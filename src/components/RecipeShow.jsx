@@ -6,22 +6,14 @@ import serverPath from '../paths'
 import { Link } from 'react-router-dom'
 
 
-export class Recipes extends Component {
+export class RecipeShow extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      waiting: false,
-      recipes: []
-    }
-  }
 
   componentWillMount() {
-    this.getRecipesData()
+    this.getRecipeData()
   }
 
-  getRecipesData() {
+  getRecipeData() {
     this.setState({ waiting: true })
     axios.get(`${serverPath}/recipes/`)
     .then((response) => {
@@ -30,19 +22,6 @@ export class Recipes extends Component {
     .catch((error) => {
       console.log("Here is an error: ", error)
     })
-  }
-
-  renderRecipes() {
-    return (
-      this.state.recipes.map((recipe, index) => {
-        return(
-          <RecipeRow
-            key={index}
-            {...recipe}
-            />
-        )
-      })
-    )
   }
 
   render() {
@@ -56,7 +35,7 @@ export class Recipes extends Component {
             </div>
             <div className="col-5 d-flex justify-content-end">
 
-              <Link className="btn btn-sm btn-primary my-2 my-sm-0" to='/new'>New Sonic Recipe</Link>
+              <Link className="btn btn-sm btn-primary my-2 my-sm-0" to='/'>New Sonic Recipe</Link>
             </div>
           </div>
         <div className="row justify-content-center">
@@ -73,7 +52,6 @@ export class Recipes extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.renderRecipes()}
                 </tbody>
               </table>
             </div>
@@ -90,4 +68,4 @@ export class Recipes extends Component {
 }
 }
 
-export default Recipes
+export default RecipeShow
