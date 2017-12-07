@@ -21,8 +21,8 @@ export class RecipeShow extends Component {
 
   mapToState(e) {
     var text
-    e.target.value === null ? text = "" : text = e.target.value
-    if (e.target.name === "artist") this.setState({formData: {...this.state.formData, artist: text }})
+    e.target.value === null || e.target.value === undefined ? text = "" : text = e.target.value
+    if      (e.target.name === "artist") this.setState({formData: {...this.state.formData, artist: text }})
     else if (e.target.name === "album") this.setState({formData: {...this.state.formData, album: text }})
     else if (e.target.name === "track") this.setState({formData: {...this.state.formData, track: text }})
     else if (e.target.name === "instrument") this.setState({formData: {...this.state.formData, instrument: text }})
@@ -30,10 +30,26 @@ export class RecipeShow extends Component {
     else if (e.target.name === "instructions") this.setState({formData: {...this.state.formData, instructions: text }})
   }
 
-  submitNewRecipe() {
-    axios.post(`${serverPath}/recipes/create`, this.state.formData)
+  componentWillMount() {
+    this.getRecipe()
+  }
+
+  getRecipe() {
+    axios.get(`${serverPath}/recipes/${this.props.match.params.id}`)
     .then((response) => {
       console.log("Here is an response: ", response)
+      if (response.status === 200) {
+        this.setState({ formData: response.data })
+      }
+    })
+    .catch((error) => {
+      console.log("Here is an error: ", error)
+    })
+  }
+
+  updateRecipe() {
+    axios.put(`${serverPath}/recipes/${this.props.match.params.id}/update`, this.state.formData)
+    .then((response) => {
       if (response.status === 200) {
         this.props.history.goBack()
       }
@@ -87,7 +103,7 @@ export class RecipeShow extends Component {
 
           </div>
           <div className="row d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={this.submitNewRecipe.bind(this)}>Save</button>
+            <button className="btn btn-primary" onClick={this.updateRecipe.bind(this)}>Update</button>
           </div>
 
 

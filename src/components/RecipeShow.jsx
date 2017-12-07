@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-import RecipeRow from './RecipeRow'
 import axios from 'axios'
 import serverPath from '../paths'
 import { Link } from 'react-router-dom'

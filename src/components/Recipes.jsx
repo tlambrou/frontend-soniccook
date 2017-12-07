@@ -10,7 +10,6 @@ export class Recipes extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       waiting: false,
       recipes: []
@@ -35,9 +34,23 @@ export class Recipes extends Component {
   renderRecipes() {
     return (
       this.state.recipes.map((recipe, index) => {
+        recipe.pop = (recipe) => {
+          this.setState({recipes: this.state.recipes.filter((currentRecipe, index) => {
+            if (currentRecipe.id === recipe.id){
+              return false
+            } else {
+              return true
+            }
+          })})
+        }
+        recipe.edit = (recipe) => {
+          this.props.history.push(`/recipes/${recipe.id}/edit`)
+        }
         return(
           <RecipeRow
             key={index}
+            delete={recipe.pop.bind(this)}
+            edit={recipe.edit.bind(this)}
             {...recipe}
             />
         )
@@ -59,35 +72,35 @@ export class Recipes extends Component {
               <Link className="btn btn-sm btn-primary my-2 my-sm-0" to='/new'>New Sonic Recipe</Link>
             </div>
           </div>
-        <div className="row justify-content-center">
-          <div className="col-12">
-            <div className="table-responsive">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Track</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th className="text-right">Instrument</th>
-                    <th className="text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.renderRecipes()}
-                </tbody>
-              </table>
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <div className="table-responsive">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Track</th>
+                      <th>Artist</th>
+                      <th>Album</th>
+                      <th className="text-right">Instrument</th>
+                      <th className="text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.renderRecipes()}
+                  </tbody>
+                </table>
+              </div>
+
             </div>
-
           </div>
-        </div>
 
+
+        </div>
 
       </div>
 
-    </div>
-
-  )
-}
+    )
+  }
 }
 
 export default Recipes
