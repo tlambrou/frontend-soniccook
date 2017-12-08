@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import serverPath from '../paths'
 import { Link } from 'react-router-dom'
-import ReactPlayer from 'react-player'
+import AudioPlayer from './AudioPlayer'
 
 
 export class RecipeShow extends Component {
@@ -36,28 +36,6 @@ export class RecipeShow extends Component {
     })
   }
 
-  renderPreview() {
-    if (ReactPlayer.canPlay(this.state.formData.sampleURL)){
-      return (
-        <div>
-          <ReactPlayer
-            url={this.state.formData.sampleURL}
-            playing={false}
-            controls={false}
-            height={50}
-            />
-          <button className="btn btn-sml btn-primary btn-just-icon" >
-            <i className="nc-icon nc-button-play"></i>
-          </button>
-        </div>
-      )
-    } else {
-      return (
-        <h5 className="text-danger"><small>We're sorry the preview could not be loaded</small></h5>
-      )
-    }
-  }
-
   render() {
     return (
       <div className="section section-gray">
@@ -78,7 +56,8 @@ export class RecipeShow extends Component {
                   Sample Preview
                 </h3>
                 <br/>
-                {this.renderPreview()}
+                {console.log("SampleURL:", this.state.formData.sampleURL)}
+                <AudioPlayer sampleURL={this.state.formData.sampleURL} />
                 <h3>
                   Ingredients
                 </h3>
