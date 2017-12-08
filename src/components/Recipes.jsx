@@ -34,7 +34,7 @@ export class Recipes extends Component {
   renderRecipes() {
     return (
       this.state.recipes.map((recipe, index) => {
-        recipe.pop = (recipe) => {
+        recipe.delete = (recipe) => {
           this.setState({recipes: this.state.recipes.filter((currentRecipe, index) => {
             if (currentRecipe.id === recipe.id){
               return false
@@ -49,7 +49,7 @@ export class Recipes extends Component {
         return(
           <RecipeRow
             key={index}
-            delete={recipe.pop.bind(this)}
+            delete={recipe.delete.bind(this)}
             edit={recipe.edit.bind(this)}
             {...recipe}
             />

@@ -1,13 +1,13 @@
 import axios from 'axios'
 import serverPath from '../paths'
 
-export const UPDATE_RECIPES_SUCCESS = "UPDATE_RECIPES_SUCCESS"
-export const UPDATE_RECIPES_REQUEST = "UPDATE_RECIPES_SUCCESS"
-export const UPDATE_RECIPES_FAILURE = "UPDATE_RECIPES_FAILURE"
+export const INDEX_RECIPES_SUCCESS = "INDEX_RECIPES_SUCCESS"
+export const INDEX_RECIPES_REQUEST = "INDEX_RECIPES_REQUEST"
+export const INDEX_RECIPES_FAILURE = "INDEX_RECIPES_FAILURE"
 
-export const updateRecipesSuccess = (data) => {
+export const indexRecipesSuccess = (data) => {
   return {
-    type: UPDATE_RECIPES_SUCCESS,
+    type: INDEX_RECIPES_SUCCESS,
     payload: { data }
   }
 }
@@ -17,18 +17,18 @@ export const updateRecipesRequest  = () => {
     axios.get(`${serverPath}/recipes/`)
     .then((response) => {
       console.log(response.data)
-      dispatch(updateRecipesSuccess(response.data))
+      dispatch(indexRecipesSuccess(response.data))
     })
     .catch((error) => {
       console.log("Here is an error: ", error)
-      dispatch(updateRecipesFailure(error))
+      dispatch(indexRecipesFailure(error))
     })
   }
 }
 
-export const updateRecipesFailure = (error) => {
+export const indexRecipesFailure = (error) => {
   return {
-    type: UPDATE_RECIPES_FAILURE,
-    payload: error
+    type: INDEX_RECIPES_FAILURE,
+    payload: { error }
   }
 }

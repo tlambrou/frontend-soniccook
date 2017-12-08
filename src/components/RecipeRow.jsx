@@ -2,9 +2,19 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import serverPath from '../paths'
+import { Link } from 'react-router-dom'
+
+
 
 export class RecipeRow extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      editToggle: "",
+      deleteToggle: ""
+    }
+  }
   delete() {
     axios.delete(`${serverPath}/recipes/${this.props.id}`)
     .then((response) => {
@@ -17,18 +27,26 @@ export class RecipeRow extends Component {
     })
   }
 
+  handleEditTooltip(event) {
+    var toggle = event.target.getAttribute('data-toggle')
+    event.target.getAttribute('data-toggle="tooltip"').toggle({ trigger: 'hover' })
+    console.log(toggle)
+  }
+
+
   render() {
+
     return (
       <tr>
-        <td>{this.props.track}</td>
+        <td><Link to={`/recipes/${this.props.id}`}>{this.props.track}</Link></td>
         <td>{this.props.artist}</td>
         <td>{this.props.album}</td>
         <td className="text-right">{this.props.instrument}</td>
         <td className="td-actions text-right">
-          <button type="button" onClick={() => this.props.edit({...this.props})} data-toggle="tooltip" data-placement="top" title="Edit" data-original-title="Edit" className="btn btn-success btn-link btn-sm">
+          <button ref="editTooltip" type="button" onClick={(e) => this.props.edit({...this.props})} data-toggle="tooltip" data-placement="top" title="Edit" data-original-title="Edit" className="btn btn-success btn-link btn-sm">
             <i className="fa fa-edit"></i>
           </button>
-          <button type="button" onClick={this.delete.bind(this)} data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete" className="btn btn-danger btn-link btn-sm">
+          <button onClick={ (e) => this.delete() } data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete" className="btn btn-danger btn-link btn-sm">
             <i className="fa fa-times"></i>
           </button>
         </td>

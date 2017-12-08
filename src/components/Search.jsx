@@ -30,6 +30,7 @@ export default class Search extends Component {
   requestData() {
     axios.get(`${serverPath}/ingredients/${this.state.search}`)
     .then((response) => {
+      console.log(response)
       this.setState({ dataSource: response.data, waiting: false })
     })
     .catch((error) => {
@@ -54,14 +55,6 @@ export default class Search extends Component {
           </div>
             </div>
       </div>
-
-
-    );
-  }
-
-
-
-  getAmazonData(value) {
-
+    )
   }
 }
