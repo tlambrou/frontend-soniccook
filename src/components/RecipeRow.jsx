@@ -39,8 +39,8 @@ export class RecipeRow extends Component {
     return (
       <tr>
         <td><Link to={`/recipes/${this.props.id}`}>{this.props.track}</Link></td>
-        <td>{this.props.artist}</td>
-        <td>{this.props.album}</td>
+        <td><Link to={`/recipes/${this.props.id}`}>{this.props.artist}</Link></td>
+        <td><Link to={`/recipes/${this.props.id}`}>{this.props.album}</Link></td>
         <td className="text-right">{this.props.instrument}</td>
         <td className="td-actions text-right">
           <button ref="editTooltip" type="button" onClick={(e) => this.props.edit({...this.props})} data-toggle="tooltip" data-placement="top" title="Edit" data-original-title="Edit" className="btn btn-success btn-link btn-sm">

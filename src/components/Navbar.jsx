@@ -13,10 +13,7 @@ export class Navbar extends Component {
           <a className="navbar-brand" href="/">Sonic Cook</a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form className="form-inline ml-auto">
-              <input className="form-control mr-sm-2 no-border" type="text" placeholder="Search"/>
-              <button type="submit" className="btn btn-primary btn-just-icon btn-round"><i className="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
-            </form>
+            
           </div>
         </div>
       </nav>

@@ -54,26 +54,26 @@ export class RecipesEdit extends Component {
   updateRecipe() {
     switch (this.state.isEditForm) {
       case true:
-        axios.put(`${serverPath}/recipes/${this.props.match.params.id}/update`, this.state.formData)
-        .then((response) => {
-          if (response.status === 200) {
-            this.props.history.goBack()
-          }
-        })
-        .catch((error) => {
-          console.log("Here is an error: ", error)
-        })
+      axios.put(`${serverPath}/recipes/${this.props.match.params.id}/update`, this.state.formData)
+      .then((response) => {
+        if (response.status === 200) {
+          this.props.history.goBack()
+        }
+      })
+      .catch((error) => {
+        console.log("Here is an error: ", error)
+      })
       case false:
-        axios.post(`${serverPath}/recipes/create`, this.state.formData)
-        .then((response) => {
-          console.log("Here is an response: ", response)
-          if (response.status === 200) {
-            this.props.history.goBack()
-          }
-        })
-        .catch((error) => {
-          console.log("Here is an error: ", error)
-        })
+      axios.post(`${serverPath}/recipes/create`, this.state.formData)
+      .then((response) => {
+        console.log("Here is an response: ", response)
+        if (response.status === 200) {
+          this.props.history.goBack()
+        }
+      })
+      .catch((error) => {
+        console.log("Here is an error: ", error)
+      })
     }
 
   }
@@ -111,7 +111,7 @@ export class RecipesEdit extends Component {
             <div className="col-md-4">
               <div className="form-group">
                 <label htmlFor="instructions">Instructions</label>
-                <input type="text" onChange={(e) => {this.mapToState(e)}} name="instructions" id="instructions" value={this.state.formData.instructions} className="form-control" placeholder="Instructions" />
+                <textarea onChange={(e) => {this.mapToState(e)}} name="instructions" id="instructions" value={this.state.formData.instructions} className="form-control border-input" placeholder="Include your instructions here..." rows="3"></textarea>
               </div>
             </div>
             <div className="col-md-4">

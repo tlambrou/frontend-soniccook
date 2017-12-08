@@ -69,7 +69,7 @@ export class Recipes extends Component {
             </div>
             <div className="col-5 d-flex justify-content-end">
 
-              <Link className="btn btn-sm btn-primary my-2 my-sm-0" to='/new'>New Sonic Recipe</Link>
+              <Link className="btn btn-primary btn-magnify my-2 my-sm-0" to='/new'><i className="nc-icon nc-spaceship"></i>  New Sonic Recipe</Link>
             </div>
           </div>
           <div className="row justify-content-center">
