@@ -4,6 +4,7 @@ import RecipeRow from './RecipeRow'
 import axios from 'axios'
 import serverPath from '../paths'
 import { Link } from 'react-router-dom'
+import MessageLoader from './MessageLoader'
 
 
 export class Recipes extends Component {
@@ -64,7 +65,7 @@ export class Recipes extends Component {
         <div className="container">
           <div className="row d-flex justify-content-between align-items-center">
             <div className="col-7">
-              <h2>Sonic Recipes...</h2>
+              <h4>Latest Recipes...</h4>
               <br/>
             </div>
             <div className="col-5 d-flex justify-content-end">
@@ -86,7 +87,7 @@ export class Recipes extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.renderRecipes()}
+                    {(this.waiting) ? <MessageLoader message="Reticulating splines..." /> : this.renderRecipes()}
                   </tbody>
                 </table>
               </div>

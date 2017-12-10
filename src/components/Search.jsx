@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
+import AutoCompleteSuggest from './AutoCompleteSuggest'
+import PreviewSearch from './PreviewSearch'
 import ProgressLoader from './ProgressLoader'
 import axios from 'axios'
 import serverPath from '../paths'
@@ -40,21 +42,42 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center">
-        <div className="col-8">
-          <div className="search-component">
-            <AutoComplete value={this.state.search}
-              hintText="Type something"
-              dataSource={this.state.dataSource}
-              floatingLabelText="Search"
-              onUpdateInput={this.changeSearch.bind(this)}
-              fullWidth={true}
-              />
-            { (this.state.waiting) ? (<ProgressLoader />) : (<span></span>) }
-            <p><span><strong>Here is your search:</strong>... {this.state.search}</span></p>
-          </div>
+      <div>
+        <div className="row justify-content-center">
+          <div className="col-8">
+            <div className="search-component">
+              <AutoComplete value={this.state.search}
+                hintText="Type something"
+                dataSource={this.state.dataSource}
+                floatingLabelText="Search"
+                onUpdateInput={this.changeSearch.bind(this)}
+                fullWidth={true}
+                />
+              { (this.state.waiting) ? <ProgressLoader /> : <span></span> }
+              <p><span><strong>Here is your search:</strong>... {this.state.search}</span></p>
             </div>
+          </div>
+        </div>
+        <br/>
+        <hr/>
+        <div className="row justify-content-center">
+          <div className="col-8">
+            <div className="search-component">
+              <AutoCompleteSuggest/>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div className="row justify-content-center">
+          <div className="col-8">
+            <div className="search-component">
+              <PreviewSearch/>
+            </div>
+          </div>
+        </div>
       </div>
+
+
     )
   }
 }
