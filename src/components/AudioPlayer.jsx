@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
 import ReactPlayer from 'react-player'
-import { PlayButton, PauseButton } from 'react-player-controls'
 
 
 export class AudioPlayer extends Component {
@@ -87,8 +84,8 @@ export class AudioPlayer extends Component {
 
   renderPreview() {
     const {
-      url, playing, volume, muted, loop,
-      played, duration,
+      playing, volume, muted, loop,
+      played,
       playbackRate,
       soundcloudConfig,
       vimeoConfig,

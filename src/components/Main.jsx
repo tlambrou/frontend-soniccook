@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Navbar from "./Navbar"
 import Recipes from "./Recipes"
 import RecipeShow from './RecipeShow'
-import RecipesNew from './RecipesNew'
 import RecipesEdit from './RecipesEdit'
 import Search from "./Search"
 import { Switch, Route } from 'react-router-dom'

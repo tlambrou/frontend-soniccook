@@ -3,7 +3,6 @@ import createClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import fetch from 'isomorphic-fetch';
-import axios from 'axios'
 import serverPath from '../paths'
 
 const PreviewSearch = createClass({
@@ -68,7 +67,7 @@ const PreviewSearch = createClass({
     console.log(this.state)
 		return (
 			<div className="section">
-				<AsyncComponent multi={this.state.multi} value={this.state.value} onChange={this.onChange} onValueClick={this.gotoUser} valueKey="title" labelKey="id" placeholder="Type the name of a song, album or artist" loadOptions={this.getVideos} backspaceRemoves={this.state.backspaceRemoves} />
+				<AsyncComponent multi={this.state.multi} value={this.state.value} onChange={this.onChange} onValueClick={this.gotoUser} valueKey="title" labelKey="title" placeholder="Type the name of a song, album or artist" loadOptions={this.getVideos} backspaceRemoves={this.state.backspaceRemoves} />
 			</div>
 		);
 	}
