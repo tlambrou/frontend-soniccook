@@ -36,6 +36,7 @@ export class RecipeShow extends Component {
   }
 
   render() {
+    console.log(this.state.formData.instructions)
     return (
       <div className="section section-gray">
         <div className="container">
@@ -72,10 +73,7 @@ export class RecipeShow extends Component {
                   Instructions
                 </h3>
                 <br/>
-                <h6>
-                  {this.state.formData.instructions}
-                </h6>
-
+                  <div dangerouslySetInnerHTML={{__html: this.state.formData.instructions}} />
 
               </div>
             </div>

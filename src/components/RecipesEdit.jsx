@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import serverPath from '../paths'
 import PreviewSearch from './PreviewSearch'
+import ReactQuill from 'react-quill'
 
 export class RecipesEdit extends Component {
 
@@ -30,7 +31,6 @@ export class RecipesEdit extends Component {
     else if (e.target.name === "track") this.setState({formData: {...this.state.formData, track: text }})
     else if (e.target.name === "instrument") this.setState({formData: {...this.state.formData, instrument: text }})
     else if (e.target.name === "sampleURL") this.setState({formData: {...this.state.formData, sampleURL: text }})
-    else if (e.target.name === "instructions") this.setState({formData: {...this.state.formData, instructions: text }})
   }
 
   componentWillMount() {
@@ -78,7 +78,7 @@ export class RecipesEdit extends Component {
       })
       break
       default:
-        break
+      break
     }
 
   }
@@ -98,51 +98,51 @@ export class RecipesEdit extends Component {
                     <br/>
                   </div>
                 </div>
-                  <div className="row">
-                    <div className="col-md-4 col-sm-6">
-                      <div className="form-group">
-                        <label htmlFor="track">Track</label>
-                        <input type="text" onChange={(e) => {this.mapToState(e)}} name="track" id="track" value={this.state.formData.track} className="form-control" placeholder="Track" />
-                      </div>
+                <div className="row">
+                  <div className="col-md-4 col-sm-6">
+                    <div className="form-group">
+                      <label htmlFor="track">Track</label>
+                      <input type="text" onChange={(e) => {this.mapToState(e)}} name="track" id="track" value={this.state.formData.track} className="form-control" placeholder="Track" />
                     </div>
-
-                    <div className="col-md-4 col-sm-6">
-                      <div className="form-group">
-                        <label htmlFor="artist">Artist</label>
-                        <input type="text" onChange={(e) => {this.mapToState(e)}} name="artist" id="artist" value={this.state.formData.artist} className="form-control" placeholder="Artist" />
-                      </div>
-                    </div>
-                    <div className="col-md-4 col-sm-6">
-                      <div className="form-group">
-                        <label htmlFor="album">Album</label>
-                        <input type="text" onChange={(e) => {this.mapToState(e)}} name="album" id="album"value={this.state.formData.album} className="form-control" placeholder="Album" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="instrument">Audio Sample</label>
-                    <input type="text" onChange={(e) => {this.mapToState(e)}} name="sampleURL" id="sampleURL" value={this.state.formData.sampleURL} className="form-control" placeholder="Type a name of a song to search for an audio clip to link" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="instrument">Primary Instrument</label>
-                    <input type="text" onChange={(e) => {this.mapToState(e)}} name="instrument" id="instrument" value={this.state.formData.instrument} className="form-control" placeholder="Instrument" />
                   </div>
 
-                  <div className="form-group">
-                    <label>Instructions</label>
-                    <textarea onChange={(e) => {this.mapToState(e)}} name="instructions" id="instructions" value={this.state.formData.instructions} className="form-control textarea-limited" placeholder="Enter in your instructions in order" rows="3" maxLength="1000"></textarea>
-                    <h5><small><span id="textarea-limited-message" className="pull-right">1000 characters left</span></small></h5>
-                  </div>
-
-                  <div className="col-sm-11 d-flex justify-content-between">
-                    <div className="col-3 d-flex justify-content-center">
-                        <button onClick={() => this.props.history.goBack()} className="btn btn-default btn-round">Cancel</button>
-
-                    </div>
-                    <div className="col-8 d-flex justify-content-center">
-                      <button onClick={this.updateRecipe.bind(this)} className="btn btn-wd btn-info btn-round">Save</button>
+                  <div className="col-md-4 col-sm-6">
+                    <div className="form-group">
+                      <label htmlFor="artist">Artist</label>
+                      <input type="text" onChange={(e) => {this.mapToState(e)}} name="artist" id="artist" value={this.state.formData.artist} className="form-control" placeholder="Artist" />
                     </div>
                   </div>
+                  <div className="col-md-4 col-sm-6">
+                    <div className="form-group">
+                      <label htmlFor="album">Album</label>
+                      <input type="text" onChange={(e) => {this.mapToState(e)}} name="album" id="album"value={this.state.formData.album} className="form-control" placeholder="Album" />
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="instrument">Audio Sample</label>
+                  <input type="text" onChange={(e) => {this.mapToState(e)}} name="sampleURL" id="sampleURL" value={this.state.formData.sampleURL} className="form-control" placeholder="Type a name of a song to search for an audio clip to link" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="instrument">Primary Instrument</label>
+                  <input type="text" onChange={(e) => {this.mapToState(e)}} name="instrument" id="instrument" value={this.state.formData.instrument} className="form-control" placeholder="Instrument" />
+                </div>
+
+                <div className="form-group">
+                  <label>Instructions (Enter in the instructions of how to produce the sound with your gear)</label>
+                  <ReactQuill onChange={(text) => {this.setState({formData: {...this.state.formData, instructions: text}})}} value={this.state.formData.instructions} name="instructions" id="instructions" />
+                  <h5><small><span id="textarea-limited-message" className="pull-right">10000 characters left</span></small></h5>
+                </div>
+
+                <div className="col-sm-11 d-flex justify-content-between">
+                  <div className="col-3 d-flex justify-content-center">
+                    <button onClick={() => this.props.history.goBack()} className="btn btn-default btn-round">Cancel</button>
+
+                  </div>
+                  <div className="col-8 d-flex justify-content-center">
+                    <button onClick={this.updateRecipe.bind(this)} className="btn btn-wd btn-info btn-round">Save</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
