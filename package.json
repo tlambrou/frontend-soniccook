@@ -16,6 +16,7 @@
     "react-autosuggest": "^9.3.2",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
+    "react-jsonschema-form": "^1.0.0",
     "react-md-editor": "^0.2.2",
     "react-player": "^0.25.3",
     "react-player-controls": "^0.5.17",

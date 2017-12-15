@@ -5,6 +5,8 @@ import axios from 'axios'
 import serverPath from '../paths'
 import { Link } from 'react-router-dom'
 import MessageLoader from './MessageLoader'
+import Header from './Header'
+import SubscribeTransparent from './SubscribeTransparent'
 
 
 export class Recipes extends Component {
@@ -61,43 +63,47 @@ export class Recipes extends Component {
 
   render() {
     return (
-      <div className="section section-gray">
-        <div className="container">
-          <div className="row d-flex justify-content-between align-items-center">
-            <div className="col-7">
-              <h4>Latest Recipes...</h4>
-              <br/>
-            </div>
-            <div className="col-5 d-flex justify-content-end">
+      <div>
+        <div className="section section-gray">
+          <SubscribeTransparent/>
 
-              <Link className="btn btn-primary btn-magnify my-2 my-sm-0" to='/new'><i className="nc-icon nc-spaceship"></i>  New Sonic Recipe</Link>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className="table-responsive">
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Track</th>
-                      <th>Artist</th>
-                      <th>Album</th>
-                      <th className="text-right">Instrument</th>
-                      <th className="text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {(this.waiting) ? <MessageLoader message="Reticulating splines..." /> : this.renderRecipes()}
-                  </tbody>
-                </table>
+          <div className="container">
+            <div className="row d-flex justify-content-between align-items-center">
+              <div className="col-7">
+                <h4>Latest Recipes...</h4>
+                <br/>
               </div>
+              <div className="col-5 d-flex justify-content-end">
 
+                <Link className="btn btn-primary btn-magnify my-2 my-sm-0" to='/new'><i className="nc-icon nc-spaceship"></i>  New Sonic Recipe</Link>
+              </div>
             </div>
-          </div>
+            <div className="row justify-content-center">
+              <div className="col-12">
+                <div className="table-responsive">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Track</th>
+                        <th>Artist</th>
+                        <th>Album</th>
+                        <th className="text-right">Instrument</th>
+                        <th className="text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(this.waiting) ? <MessageLoader message="Reticulating splines..." /> : this.renderRecipes()}
+                    </tbody>
+                  </table>
+                </div>
 
+              </div>
+            </div>
+
+
+          </div>
 
         </div>
-
       </div>
 
     )
