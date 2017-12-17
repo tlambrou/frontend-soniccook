@@ -120,6 +120,10 @@ export class RecipesEdit extends Component {
                   </div>
                 </div>
                 <div className="form-group">
+                  <label htmlFor="instrument">PreviewSearch</label>
+                  <PreviewSearch/>
+                </div>
+                <div className="form-group">
                   <label htmlFor="instrument">Audio Sample</label>
                   <input type="text" onChange={(e) => {this.mapToState(e)}} name="sampleURL" id="sampleURL" value={this.state.formData.sampleURL} className="form-control" placeholder="Type a name of a song to search for an audio clip to link" />
                 </div>
