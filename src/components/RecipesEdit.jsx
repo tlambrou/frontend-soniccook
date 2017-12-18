@@ -120,7 +120,7 @@ export class RecipesEdit extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="instrument">PreviewSearch</label>
+                  <label htmlFor="instrument">Preview Search</label>
                   <PreviewSearch/>
                 </div>
                 <div className="form-group">
