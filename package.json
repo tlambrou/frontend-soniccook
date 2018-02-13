@@ -9,7 +9,7 @@
     "create-react-class": "^15.6.2",
     "dotenv": "^4.0.0",
     "halogen": "^0.2.0",
-    "marked": "^0.3.7",
+    "marked": "^0.3.12",
     "material-ui": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
